@@ -50,6 +50,7 @@ uart:
     debug:
       direction: BOTH
       dummy_receiver: false
+      debug_prefix: "[ECODAN] "
       after:
         timeout: 50ms
       sequence:
@@ -71,6 +72,7 @@ uart:
     debug:
       direction: BOTH
       dummy_receiver: false
+      debug_prefix: "[PROXY] "
       after:
         timeout: 50ms
       sequence:
