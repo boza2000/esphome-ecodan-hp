@@ -54,7 +54,10 @@ uart:
       after:
         timeout: 50ms
       sequence:
-        - lambda: if (id(uart_debug_switch).state) UARTDebug::log_hex(direction, bytes, ' ');
+      #  - lambda: if (id(uart_debug_switch).state) UARTDebug::log_hex(direction, bytes, ' ');
+        - lambda: !lambda |-
+            if (id(uart_debug_switch).state)
+              UARTDebug::log_hex(direction, bytes, ' ', debug_prefix);
 
   - id: uart_proxy
     rx_pin:
@@ -76,8 +79,10 @@ uart:
       after:
         timeout: 50ms
       sequence:
-        - lambda: if (id(uart_debug_switch).state) UARTDebug::log_hex(direction, bytes, '_');  
-
+        #- lambda: if (id(uart_debug_switch).state) UARTDebug::log_hex(direction, bytes, '_');  
+        - lambda: !lambda |-
+            if (id(uart_debug_switch).state)
+              UARTDebug::log_hex(direction, bytes, ' ', debug_prefix);
 ecodan:
   uart_id: uart_main
   proxy_uart_id: uart_proxy
