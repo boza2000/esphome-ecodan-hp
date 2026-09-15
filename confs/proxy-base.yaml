@@ -74,7 +74,7 @@ uart:
     stop_bits: 1
     debug:
       direction: BOTH
-      dummy_receiver: true
+      dummy_receiver: false
       debug_prefix: "[PROXY] "
       after:
         timeout: 50ms
